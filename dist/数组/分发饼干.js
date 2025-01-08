@@ -4,16 +4,17 @@ function findContentChildren(g, s) {
     s = s.sort((a, b) => {
         return a - b;
     });
-    g = g.sort((a, b) => {
+    g = s.sort((a, b) => {
         return a - b;
     });
-    let i = 0, j = 0;
-    for (; i < s.length && j < g.length; i++) {
+    let num = 0, i = 0, j = 0;
+    for (; i < s.length && j < g.length;) {
         if (s[i] >= g[j]) {
-          num++;
-          j++;
+            num++;
+            i++;
         }
+        j++;
     }
-    return j;
+    return num;
 }
-console.log('findContentChildren', findContentChildren([10,9,8,7], [5,6,7,8]));
+console.log('findContentChildren', findContentChildren([1, 2, 3], [1, 1]));
